@@ -1,25 +1,62 @@
-#Start by creating functions for the user to check their inventory.
 #Make sure to include an empty dictionary to start a blank inventory.
-#Import math for future math questions in the game later
+#Import math and randomfor future math questions in the game later
 import math
+import random
+inventory_initial = {
+    'ID': 0,
+    'Calculator' : 0,
+    'Google Search': 0,
+    'Back of the Textbook': 0,
+    'Extra Credit': 0}
 
-inventory = {}
-def check_inventory():
-    storage_q = input("Would you like to check your inventory?").lower()
+inventory = {
+    'ID': 0,
+    'Calculator' : 0,
+    'Google Search': 0,
+    'Back of the Textbook': 0,
+    'Extra Credit': 0}
+
+#Quick function when user needs to see what's in their inventory.
+def show_inventory():
+    storage_q = input("Would you like to check your inventory? ").lower()
     if storage_q == "yes":
-        print(inventory)
-        use_inventory
+        for key, value in inventory.items():
+            print(f"{key}: {value}")
+            use_inventory()
     else:
-        print("Guess you don't want to check your inventory. Let's continue.")
+        print('Okay.\nContinue on, then.')
 
+
+
+
+#Create a function for when the user wants to use an item to answer a question.
 def use_inventory():
-    input("Would you like to use an item in your inventory?").lower()
-    if inventory == []:
-        print("There's nothing in your inventory! Sorry!\nTime to answer the question!")
+    i = input("Would you like to try to use an item in your inventory? ").lower()
+    if i == "yes".lower():
+        if inventory == inventory_initial:
+                print("There's nothing in your inventory! Sorry!\nTime to answer the question!")
+        else:
+            u = input("What item would you like to use? ").lower()
+            item(u)
+    elif i == "no".lower():
+        print("Alrighty then.")
     else:
-        print("fix this")
+        print("YOU DON'T DESERVE ACCESS TO YOUR INVENTORY. CONTINUE.")
 
 
+
+
+#For adding an item into the inventory
+def add_item(i_one, i_two, i_three):
+    a = input(f"Choose an item to add to your inventory\n{i_one}\n{i_two}\n{i_three}")
+    if a == i_one:
+        inventory.append[i_one] += 1
+    elif a == i_two:
+        inventory.append[i_two] += 1
+    elif a == i_three:
+        inventory.append[i_three] += 1
+    else:
+        print("You are incompetent. You lost your priveleges.")
 
 #Create a class for the teachers included in the game.
 #Parameters include their subject and special personality.
@@ -32,27 +69,60 @@ class Teacher(object):
         self.subject = subject
         self.special = special
 
+#List of all the teachers with their subjects and special ability that can inhibit the user to continue the game.
 T_01 = Teacher("Mrs. Kipp", "Intro to Engineering & Digital Modeling", "T-Square")
-T_02 = Teacher("Mr. Pantaleo", "SIA", "Gravity")
-T_03 = Teacher("Mr. Merkl", "Biology", "Dinosaurian Society")
-T_04 = Teacher("Mrs. O'Connor", "Technology and Design", "The Power of AutoCAD")
-T_05 = Teacher("Dr. Fang", "Physics I", "Degree from Columbia University")
-T_06 = Teacher("Ms. Monroy", "Chemistry", "Dimensional Analysis")
-T_07 = Teacher("Mrs. Gerstein", "Introduction for Programming", "Python")
-T_08 = Teacher("Mrs. Valley", "U.S. History I", "Her Strength")
-T_09 = Teacher("Mr. Sanservino", "U.S. History II", "POP QUIZ")
-T_10 = Teacher("Mr. Rafalowski", "Principal", "MakerSpace")
+T_02 = Teacher("Mr. Merkl", "Biology", "Dinosaurian Society")
+T_03 = Teacher("Dr. Fang", "Physics I", "Degree from Columbia University")
+T_04 = Teacher("Mrs. Gerstein", "Introduction for Programming", "Python")
+T_05 = Teacher("Mr. Sanservino", "U.S. History II", "POP QUIZ")
+T_06 = Teacher("Mr. Rafalowski", "Principal", "MakerSpace")
 
 
+#Create a class for all of the questions with respective answers.
+#Include the response if the user gets the question correct or wrong in the other parameters.
 class Question(object):
     """Question class for all questions and answers presented in this game"""
 
-    def __init__(self, q, a):
+    def __init__(self, question, answer, wrong, correct):
         """Parameters where 'q' is question and 'a' is its answer"""
-        self.q = q
-        self.a = a
+        self.question = question
+        self.answer = answer
+        self.wrong = wrong
+        self.correct = correct
 
-q_01 = Question("What is the name of the computer-aided design program used for 2-D and 3-D design and drafting?", "AutoCAD".lower())
+#Variables for the 20 total questions asked in the game.
+q_01 = Question("How often should I save my work? Every __ minutes.\n", "5", "YOU LOST ALL OF YOUR WORK! Try again. ", "Good work! You saved your file just in time!")
+q_02 = Question("A bike accelerates uniformly from rest to a speed of 7.10 m/s over a distance of 35.4 m. Determine the acceleration of the bike to 3 sig figs. (Just give the number. Already understood that it is in m/s^2)\n", "0.712", "GOTCHA! Try again.", "Ugh. You're too smart.")
+q_03 = Question("The __________ is the powerhouse of the cell.\n", "mitochondria\n".lower(), "C'mon it's a meme. Try again. ", "Correctamundo!")
+q_04 = Question("An input function on Python always returns a _____\n.", "string".lower(), "Are you kidding me? Try again. ", "Ah yes! Correct, my good sir!")
+q_05 = Question("How many periods are in the second paragraph of page 376? ", "26", "Mwahahaha. 0 for you. Try again. ", "Dang it. Mr. Sanservino wanted to fail you, but you got it right....")
+q_06 = Question("What is considered as 'the heart of Magnet'? (One-word answer) ", "makerspace".lower(), "It's literally right next to Mrs. Gerstein's room...Try again. ", "YAYYYYYYYYY!!!!!!")
+
+
+#Create a function when the user is asked a question in the game.
+def ask(question, answer, wrong, correct):
+    print(question.upper())
+    show_inventory()
+    use_inventory()
+    input(question)
+    while question != answer:
+        question = input(wrong).lower()
+    print(correct)
+
+
+#Create a function for whenever the user has a choice of decision for either items or actions in the game.
+def choose(first_c, first_r, second_c, second_r, third_c, third_r):
+    print(f"1. {first_c}\n2. {second_c}\n3. {third_c}\n")
+    x = input("Type the number you want to choose. ")
+    if x == "1":
+        print(first_r)
+    elif x == "2":
+        print(second_r)
+    elif x == "3":
+        print(third_r)
+    else:
+        print("You want to type an invalid response? Fine. We'll choose one for you.")
+
 
 
 
@@ -65,6 +135,8 @@ if n == "yes":
 else:
     print("It doesn't matter. You're going to play. Let's begin the journey.\n")
 
+
+#The beginning of the game includes some introduction.
 print(f"""Good morning, {name}! I have some good news and some bad news. Congratulations! Today's graduation!
 Bad news is that you're stuck in Magnet, and you need to figure out a way to get to the AIT gym in time for graduation!
 You don't want to be THAT kid.
@@ -73,24 +145,7 @@ You don't want to be THAT kid.
 
 BRINNNGGGGG!! BRINGGGGGGGG!! That's the bell!\n""")
 
-print("""1. Go to class.
-2. Run to the bathroom.
-3. Pull the fire alarm.
-4. Cry.""")
-x = input("Type the number you want to choose. ")
-
-if x == "1":
-    print("You turn right into Mrs. Kipp's class. This should be interesting")
-elif x == "2":
-    print("Mr. Rafalowski caught you cutting class. Go to class.")
-elif x == "3":
-    print("Fire alarm broke! Uh oh! Looks like you have to go to class.")
-elif x == "4":
-    print("ThErE iS nO cRyInG! Back to class!")
-else:
-    print("You want to type an invalid response? Fine. We'll choose one for you.")
-
-print("-----\n10 MINUTES LATER\n-----\n")
+choose("Go straight to period 1/2.", "Hm. Interesting choice.", "Pull the fire alarm.", "Whoops! The fire alarm doesn't work! Time for period 1/2.", "Cry.", "ThErE iS No CrYiNg HeRe! Pull it together! Get to class!")
 
 
 ###################THIS IS LEVEL 1##########################
@@ -100,22 +155,19 @@ This is the {T_01.subject} room.
 Welcome to Level 1.
 
 
-
-
-To pass each level, you must answer two questions correctly.
-After each question is presented, you may be able to check your inventory.
-Some items might help you surpass levels.
-
+To pass each level, you must answer a question correctly.
+After each question is presented, you have a chance to check your inventory.
+Some items might help you surpass questions.
 
 Here comes your first question!""")
 
-print(q_01.q)
-check_inventory()
-use_inventory()
-input(q_01.q)
-while q_01.q != q_01.a:
-    q_01.q = input("WRONG! Try again!").lower()
-print("Excellent! This was the first program in Magnet to enhance your engineering knowledge!\nMrs. Kipp is proud...BUT NOT SATISFIED!")
+ask(q_01.question, q_01.answer, q_01.wrong, q_01.correct)
+
+
+print (f"As you defeat {T_01.teacher}, she uses her {T_01.special} to try to stop you! What do you do?")
+
+choose("Allow the T-Square to hit you.", "You do not get any items to add to your inventory. Sorry.", "Jump and dodge the T-Square.", "Excellent choice! Choose two items to add to your inventory!", "Block the T-Square with an architectural scale that is next to you.", "Effective enough for you to choose one item to add to your inventory!")
+add_item(inventory[0], inventory[4], inventory[1])
 
 
 
