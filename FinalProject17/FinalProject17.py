@@ -100,14 +100,14 @@ q_06 = Question("What is considered as 'the heart of Magnet'? (One-word answer) 
 
 
 #Create a function when the user is asked a question in the game.
-def ask(question, answer, wrong, correct):
-    print(question.upper())
+def ask(q):
+    print(q.question.upper())
     show_inventory()
     use_inventory()
-    input(question)
-    while question != answer:
-        question = input(wrong).lower()
-    print(correct)
+    response = input(q.question)
+    while response != q.answer:
+        response = input(q.wrong).lower()
+    print(q.correct)
 
 
 #Create a function for whenever the user has a choice of decision for either items or actions in the game.
@@ -161,7 +161,7 @@ Some items might help you surpass questions.
 
 Here comes your first question!""")
 
-ask(q_01.question, q_01.answer, q_01.wrong, q_01.correct)
+ask(q_01)
 
 
 print (f"As you defeat {T_01.teacher}, she uses her {T_01.special} to try to stop you! What do you do?")
