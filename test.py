@@ -1,9 +1,9 @@
-q_1 = input("Is this going to work? ")
-a_1 = "yes".lower()
-health = 100
+import random
+a = {'hey': 0, 'hi': 5}
 
 
-while q_1 != a_1:
-    health -= 2
-    q_1 = input(f"You're health is now {health}. Try again. ")
-print(f"Yay! Health is now {health}!")
+def add():
+    a[random.choice(a.keys())] += 1
+
+add()
+print(a)
