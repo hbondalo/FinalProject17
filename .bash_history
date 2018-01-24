@@ -67,3 +67,9 @@ git status
 mkdir intro-to-dicts
 cd intro-to-dicts
 git init
+ls
+cd FinalProject17
+ls
+git commit -am "1/21 at 1:39am"
+git push 
+git status
