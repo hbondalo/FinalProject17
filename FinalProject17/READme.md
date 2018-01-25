@@ -8,3 +8,6 @@ of commenting, Escape Magnet provides an interactive experience to give insight 
 
 Resource used to aid in coding:
 https://stackoverflow.com/questions/4859292/how-to-get-a-random-value-in-python-dictionary
+
+Flowchart:
+https://www.draw.io/#G111e0jF9N1G0lDGco8Ni7VLr55h4XXEDC
