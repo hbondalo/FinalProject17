@@ -57,24 +57,21 @@ q_06 = Question("What is considered as 'the heart of Magnet'? (One-word answer)\
 #Quick function when user needs to see what's in their inventory.
 #A for loop is used to print out an organized list of the items and the corresponding value in the dictionary.
 def show_inventory():
+    """Adds a random amount of items to a random item in the dictionary and displays the inventory"""
     inventory[random.choice(list(inventory.keys()))] += random.randint(1,10)
     input("Let's check your inventory. Press enter. ")
     for key, value in inventory.items():
         print(f"{key}: {value}")
 
 
-#For adding an item into the inventory
-#import random is useful here to randomly add to a random value in the dictionary
-
-
-
-
+#Simple function to show the amount of attempts left with a simple print function
 def attempts_left(a):
+    """Displays how many attempts the user has left if question is incorrectly answered"""
     print(f"You have {a} attempts left.")
 
 #Create a function when the user is asked a question in the game.
 def ask(q):
-
+    """Main function that asks the various questions in the game, deducts attempts if the user gets a question wrong, and exits game if attempts = 0"""
     attempts = 3
     response = input(q.question).lower()
     while attempts >= 0:
@@ -92,6 +89,7 @@ def ask(q):
 
 #Create a function for whenever the user has a choice of decision for either items or actions in the game.
 def choose(first_c, first_r, second_c, second_r, third_c, third_r):
+    """This function has six parameters to easily give response to given choices for the user"""
     print(f"1. {first_c}\n2. {second_c}\n3. {third_c}\n")
     x = input("Type the number you want to choose. ")
     if x == "1":
@@ -104,8 +102,10 @@ def choose(first_c, first_r, second_c, second_r, third_c, third_r):
         print("I guess we'll just skip this, because you're incompetent.")
 
 #This is the last function used at the very end, should the user finish the game.
-#With given
+#Summation of the values in the inventory dictionary
 def future():
+    """Used at the very end to give the final future for the user after high school based on inventory summation of values"""
+#The next line gives the future if the summation of values in the dictionary are less than or equal to 10
     if sum(inventory.values()) <= 10:
         print("""Yikes. Looks like the college made a mistake and you're not going to your dream school.
 You end up being single for the rest of your life and can't find happiness!
@@ -161,6 +161,7 @@ choose("Go straight to period 1/2.", "Hm. Interesting choice.\n", "Pull the fire
 
 
 ###################THIS IS LEVEL 1##########################
+#Use input functions for directions and narrations
 input(f"\nLooks like you've landed in {T_01.teacher}'s room. This is the {T_01.subject} room. Welcome to Level 1. Press enter. ")
 
 
@@ -170,24 +171,25 @@ The amount of extra points you earn determines your life after high school if yo
 Press enter to continue. """)
 
 input("\nHere comes your first question! Press enter to continue. ")
-
+#Use ask function as appropriate in the storyline
 ask(q_01)
 
 
 print(f"As you defeat {T_01.teacher}, she uses her {T_01.special} to try to stop you! What do you do?\n")
-
+#Remember to allow six parameters for efficient usage of the choose function
 choose("Allow the T-Square to hit you.", "Looks like you dodged it! Nice! Here's some items.\n", "Jump and dodge the T-Square.", "Excellent choice! Items will be added to your inventory!\n", "Block the T-Square with an architectural scale that is next to you.", "Effective enough for you to have item(s) added to your inventory!\n")
 show_inventory()
 
 
 ###################THIS IS LEVEL 2##########################
+#Use similar formatting as Level One
 input("\nLet's see where we're headed to next. Press enter.")
 
 
 input(f"\nOh my! It's {T_02.teacher}! What's he's doing here?\nIt looks like this is Level 2!\nHere comes the question!")
 
 ask(q_02)
-
+#Remember to add \n for aesthetics
 print(f"Oh no! Just as you tried to escape, {T_02.teacher} uses the {T_02.special} in hopes of stopping you!\n")
 
 choose("Stomp out the Dinosaurian Society", "Ahhhh you wiped them out! Get some items!\n", "Use the power of the mitochondria to stop him", "You did it!!! YAY!!!!!!!\n", "Play country music. ", "How'd you know that he loves that?! You pass!\n")
@@ -202,7 +204,7 @@ input(f"\nWOAH! IT'S {T_03.teacher} in the {T_03.subject} ROOM! OH MY! SHE'S CHA
 ask(q_03)
 
 print(f"Looks like you did it!\n\nOH NO! SHE USES {T_03.special}! What do you do?")
-
+#Use fun choices to be entertaining
 choose("Hide yo wife. Hide yo kids.", "Effective. Yes. Items for you.\n", "Use your dad's doctorate degree.", "Reasonable. Here's some items.\n", "Pull out a stick.", "Ah yes, you pull out her number and she answers incorrectly. Items for you!\n")
 show_inventory()
 
@@ -230,6 +232,7 @@ print(f"AH YES! You did it!\n\nBut uh oh! He tries using {T_05.special} to stop 
 choose("Play Despacito.", "He loves that song! Get some items!\n", "Challenge him to a 1v1 in basketball and juke him out.", "Ah, yes, you broke his ankles! Get some items!\n", "Buy him Chick-fil-A.", "He is satisfied and gives you items.\n")
 show_inventory()
 
+
 ###############THIS IS LEVEL 6/BOSS LEVEL####################
 input("\nWE MADE IT DUDES!!!!!!!!!!!! PRESS ENTER! ")
 
@@ -243,7 +246,8 @@ choose("Ace the PARCC test.", "Efficient. Have a pizza party and more items!\n",
 show_inventory()
 
 
-#End of the game narrative/Conclusion
+#End of the game narrative/Conclusion by using future function
+#Use """ for easier formatting
 input("""\n\nCongratulation! "Looks like we madeee ittttt!"
 Let's see what your extra points says about your future!!\nPress enter!\n\n""")
 future()
