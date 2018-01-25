@@ -161,14 +161,12 @@ choose("Go straight to period 1/2.", "Hm. Interesting choice.", "Pull the fire a
 
 
 ###################THIS IS LEVEL 1##########################
-
 input(f"\nLooks like you've landed in {T_01.teacher}'s room. This is the {T_01.subject} room. Welcome to Level 1. Press enter. ")
 
 
 input("""\nTo pass each level, you must answer a question correctly.
 If you correctly answer a question, you get a random item added to your inventory for extra points!
 The amount of extra points you earn determines your life after high school if you get to graduation!
-Each item has various point amounts, but you won't know how much each item is worth until the very end!
 Press enter to continue. """)
 
 input("\nHere comes your first question! Press enter to continue. ")
@@ -178,12 +176,11 @@ ask(q_01)
 
 print(f"As you defeat {T_01.teacher}, she uses her {T_01.special} to try to stop you! What do you do?\n")
 
-choose("Allow the T-Square to hit you.", "You do not get any items to add to your inventory. Sorry.", "Jump and dodge the T-Square.", "Excellent choice! Items will be added to your inventory!", "Block the T-Square with an architectural scale that is next to you.", "Effective enough for you to have item(s) added to your inventory!")
+choose("Allow the T-Square to hit you.", "Looks like you dodged it! Nice! Here's some items..", "Jump and dodge the T-Square.", "Excellent choice! Items will be added to your inventory!", "Block the T-Square with an architectural scale that is next to you.", "Effective enough for you to have item(s) added to your inventory!")
 show_inventory()
 
 
 ###################THIS IS LEVEL 2##########################
-
 input("\nLet's see where we're headed to next. Press enter.")
 
 
@@ -193,32 +190,57 @@ ask(q_02)
 
 print(f"Oh no! Just as you tried to escape, {T_02.teacher} uses the {T_02.special} in hopes of stopping you!\n")
 
-choose("Stomp out the Dinosaurian Society", "Ineffective,", "hi", "hi", "hi", "hi")
+choose("Stomp out the Dinosaurian Society", "Ahhhh you wiped them out! Get some items!", "Use the power of the mitochondria to stop him", "You did it!!! YAY!!!!!!!", "Play country music. ", "How'd you know that he loves that?! You pass!")
 show_inventory()
 
+
 ###################THIS IS LEVEL 3##########################
+input("\nMan, that was a tough one. I wonder where we're going next. Press enter. ")
+
+input("\nWOAH! IT'S {T_03.teacher} in the {T_03.subject} ROOM! OH MY! SHE'S CHALLENGING YOU.\nTHIS IS LEVEL 3!\nHERE'S THE QUESTION! ")
 
 ask(q_03)
 
+print(f"Looks like you did it!\n\n OH NO! SHE USES {T_03.special}! What do you do?")
+
+choose("Hide yo wife. Hide yo kids.", "Effective. Yes. Items for you.", "Use your dad's doctorate degree.", "Reasonable. Here's some items.", "Pull out a stick.", "Ah yes, you pull out her number and she answers incorrectly. Items for you!")
+show_inventory()
 
 
 ###################THIS IS LEVEL 4##########################
+input("\nLet's continue on with our journey.\nWell, would you look who it is! It's {T_04.teacher} in the {T_04.subject} class!\nShe has a question for you to pass Level 4! Press enter. ")
 
 ask(q_04)
 
+print("WOWOWOW! You did it!\n\nBut uh oh! She tries using {T_04.special} to stop you! What shall you do?")
+
+choose("""git commit -am "Save changes" """, "Excellent Python skills. Have some items!", "Use the 3-D printer to generate a gift for her.", "She loves it! Have some items!", "Just whip it.", "Effective. Carry on with more items.")
+show_inventory()
+
 
 ###################THIS IS LEVEL 5##########################
+input("\nI CAN ALMOST SEE THE LIGHT. LET'S GO! PRESS ENTER!!! ")
+
+print("NO!!! {T_05.teacher} IS TRYING TO STOP US IN HIS {T_05.subject} CLASS! HE'S GIVING US A POP QUIZ FOR LEVEL 5! Press enter. ")
 
 ask(q_05)
 
+print("AH YES! You did it!\n\nBut uh oh! He tries using {T_05.special} to stop you! What shall you do?")
 
+choose("Play Despacito.", "He loves that song! Get some items!", "Challenge him to a 1v1 in basketball and juke him out.", "Ah, yes, you broke his ankles! Get some items!", "Buy him Chick-fil-A.", "He is satisfied and gives you items.")
+show_inventory()
 
 ###############THIS IS LEVEL 6/BOSS LEVEL####################
+input("WE MADE IT DUDES!!!!!!!!!!!! PRESS ENTER! ")
+
+input("{T_06.teacher}?!?!?!? WHAT ARE YOU DOING HERE? I'M TRYING TO GRADUATE!\nIt looks like this is THE FINAL LEVEL!!! Press enter. ")
 
 ask(q_06)
 
+print("You make your final escape!\n\nOh no! He tries using {T_06.special} to stop you! What shall you do?")
 
-
+choose("Ace the PARCC test.", "Efficient. Have a pizza party and more items!", "Show him your ID.", "He allows you to pass because you won't get a LOP. Gather items.", "Take a selfie with him.", "Ah, yes. Excellent. Get some items!")
+show_inventory()
 
 
 #End of the game narrative/Conclusion
