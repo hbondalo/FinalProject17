@@ -46,11 +46,11 @@ class Question(object):
 
 #Variables for the 6 total questions asked in the game.
 q_01 = Question("How often should I save my work? Every __ minutes.\n\n", "5", "YOU LOST ALL OF YOUR WORK! Try again. ", "Good work! You saved your file just in time!")
-q_02 = Question("The __________ is the powerhouse of the cell.\n\n", "mitochondria".lower(), "C'mon it's a meme. Try again. ", "Correctamundo!")
-q_03 = Question("A bike accelerates uniformly from rest to a speed of 7.10 m/s over a distance of 35.4 m. Determine the acceleration of the bike to 3 sig figs. (Just give the number. Already understood that it is in m/s^2)\n\n", "0.712", "GOTCHA! Try again.", "Ugh. You're too smart.")
-q_04 = Question("An input function on Python always returns a _____.\n\n", "string".lower(), "Are you kidding me? Try again. ", "Ah yes! Correct, my good sir!")
-q_05 = Question("How many periods are in the second paragraph of page 376?\n\n", "26", "Mwahahaha. 0 for you. Try again. ", "Dang it. Mr. Sanservino wanted to fail you, but you got it right....")
-q_06 = Question("What is considered as 'the heart of Magnet'? (One-word answer)\n\n", "makerspace".lower(), "It's literally right next to Mrs. Gerstein's room...Try again. ", "YAYYYYYYYYY!!!!!!")
+q_02 = Question("The __________ is the powerhouse of the cell.\n\n", "mitochondria", "C'mon it's a meme. Try again. ", "Correctamundo!")
+q_03 = Question("For every action, there is an equal and opposite _____.\n\n", "reaction", "GOTCHA! Try again.", "Ugh. You're too smart.")
+q_04 = Question("An input function on Python always returns a _____.\n\n", "string", "Are you kidding me? Try again. ", "Ah yes! Correct, my good sir!")
+q_05 = Question("How many periods are in the last paragraph of page 595?\n\n", "3", "Mwahahaha. 0 for you. Try again. ", "Dang it. Mr. Sanservino wanted to fail you, but you got it right....")
+q_06 = Question("What is considered as 'the heart of Magnet'? (One-word answer)\n\n", "makerspace", "It's literally right next to Mrs. Gerstein's room...Try again. ", "YAYYYYYYYYY!!!!!!")
 
 
 
@@ -76,7 +76,7 @@ def attempts_left(a):
 def ask(q):
 
     attempts = 3
-    response = input(q.question)
+    response = input(q.question).lower()
     while attempts >= 0:
         if response == q.answer:
             print(q.correct)
@@ -108,34 +108,34 @@ def choose(first_c, first_r, second_c, second_r, third_c, third_r):
 def future():
     if sum(inventory.values()) <= 10:
         print("""Yikes. Looks like the college made a mistake and you're not going to your dream school.
-        You end up being single for the rest of your life and can't find happiness!
-        Good news is that you buy a cat. You name him Gunther.
-        Better luck next time...oh wait...this is the end of the game. Whoops. Sorry.
+You end up being single for the rest of your life and can't find happiness!
+Good news is that you buy a cat. You name him Gunther.
+Better luck next time...oh wait...this is the end of the game. Whoops. Sorry.
         Thanks for playing! :)""")
     elif sum(inventory.values()) <= 20:
         print("""Well, you just BARELY got through high school, and you end up going to college.
-        However, at college, you flunk 3 classes, which makes it hard for you to even get a job.
-        You and your nagging wife, Sherley, live in an abandoned RV in Alabama now, so that's fun.
-        Thanks for playing! :)""")
+However, at college, you flunk 3 classes, which makes it hard for you to even get a job.
+You and your nagging wife, Sherley, live in an abandoned RV in Alabama now, so that's fun.
+Thanks for playing! :)""")
     elif sum(inventory.values()) <= 30:
         print("""Oooooo looks like you turned out all right. You live a normal lifestyle after earning a degree at your college.
-        It took you a couple of times to find the right spouse, but looks like you did it!
-        Your job's pretty stable, except things got rocky during the recession.
-        Overall, nice job at living life. Very adequate.
-        Thanks for playing! :)""")
+It took you a couple of times to find the right spouse, but looks like you did it!
+Your job's pretty stable, except things got rocky during the recession.
+Overall, nice job at living life. Very adequate.
+Thanks for playing! :)""")
     elif sum(inventory.values()) <= 40:
         print("""Mhm, you're living life pretty well if I do say so myself.
-        You pass your classes in an ivy league school, and get your dream job.
-        The only problem in your life is deciding which mansion to buy with your loving spouse, children, and dog, named Rufus.
-        High school did you well, and you're living life to the fullest!
-        Thanks for playing! :)""")
+You pass your classes in an ivy league school, and get your dream job.
+The only problem in your life is deciding which mansion to buy with your loving spouse, children, and dog, named Rufus.
+High school did you well, and you're living life to the fullest!
+Thanks for playing! :)""")
     else:
         print("""WOW! You're life is perfect after high school!
-        You pass your classes in the ivy league school with FLYING COLORS!
-        In college, you meet the love of your life and travel around the world happily.
-        Your job rakes up good money and your children are as successful as you are.
-        You have no worries in life, and everything is perfect.
-        Thanks for playing! :)""")
+You pass your classes in the ivy league school with FLYING COLORS!
+In college, you meet the love of your life and travel around the world happily.
+Your job rakes up good money and your children are as successful as you are.
+You have no worries in life, and everything is perfect.
+Thanks for playing! :)""")
 
 
 
@@ -143,7 +143,7 @@ def future():
 #Begin game with allowing the user to input their name for a more personal experience.
 #Use the input function.
 name = input("What is your name? \n")
-n = input(f"Welcome, {name}, to your worst nightmare. It's time to escape Magnet! Are you ready? ")
+input(f"Welcome, {name}, to your worst nightmare. It's time to escape Magnet! Are you ready? ")
 print("It doesn't matter. You're going to play. Let's begin the journey.\n")
 
 
@@ -157,7 +157,7 @@ input("""-----
 
 BRINNNGGGGG!! BRINGGGGGGGG!! That's the bell!\nPress enter.""")
 
-choose("Go straight to period 1/2.", "Hm. Interesting choice.", "Pull the fire alarm.", "Whoops! The fire alarm doesn't work! Time for period 1/2.", "Cry.", "ThErE iS No CrYiNg HeRe! Pull it together! Get to class!")
+choose("Go straight to period 1/2.", "Hm. Interesting choice.\n", "Pull the fire alarm.", "Whoops! The fire alarm doesn't work! Time for period 1/2.\n", "Cry.", "ThErE iS No CrYiNg HeRe! Pull it together! Get to class!\n")
 
 
 ###################THIS IS LEVEL 1##########################
@@ -176,7 +176,7 @@ ask(q_01)
 
 print(f"As you defeat {T_01.teacher}, she uses her {T_01.special} to try to stop you! What do you do?\n")
 
-choose("Allow the T-Square to hit you.", "Looks like you dodged it! Nice! Here's some items..", "Jump and dodge the T-Square.", "Excellent choice! Items will be added to your inventory!", "Block the T-Square with an architectural scale that is next to you.", "Effective enough for you to have item(s) added to your inventory!")
+choose("Allow the T-Square to hit you.", "Looks like you dodged it! Nice! Here's some items.\n", "Jump and dodge the T-Square.", "Excellent choice! Items will be added to your inventory!\n", "Block the T-Square with an architectural scale that is next to you.", "Effective enough for you to have item(s) added to your inventory!\n")
 show_inventory()
 
 
@@ -190,61 +190,61 @@ ask(q_02)
 
 print(f"Oh no! Just as you tried to escape, {T_02.teacher} uses the {T_02.special} in hopes of stopping you!\n")
 
-choose("Stomp out the Dinosaurian Society", "Ahhhh you wiped them out! Get some items!", "Use the power of the mitochondria to stop him", "You did it!!! YAY!!!!!!!", "Play country music. ", "How'd you know that he loves that?! You pass!")
+choose("Stomp out the Dinosaurian Society", "Ahhhh you wiped them out! Get some items!\n", "Use the power of the mitochondria to stop him", "You did it!!! YAY!!!!!!!\n", "Play country music. ", "How'd you know that he loves that?! You pass!\n")
 show_inventory()
 
 
 ###################THIS IS LEVEL 3##########################
 input("\nMan, that was a tough one. I wonder where we're going next. Press enter. ")
 
-input("\nWOAH! IT'S {T_03.teacher} in the {T_03.subject} ROOM! OH MY! SHE'S CHALLENGING YOU.\nTHIS IS LEVEL 3!\nHERE'S THE QUESTION! ")
+input(f"\nWOAH! IT'S {T_03.teacher} in the {T_03.subject} ROOM! OH MY! SHE'S CHALLENGING YOU.\nTHIS IS LEVEL 3!\nHERE'S THE QUESTION! ")
 
 ask(q_03)
 
-print(f"Looks like you did it!\n\n OH NO! SHE USES {T_03.special}! What do you do?")
+print(f"Looks like you did it!\n\nOH NO! SHE USES {T_03.special}! What do you do?")
 
-choose("Hide yo wife. Hide yo kids.", "Effective. Yes. Items for you.", "Use your dad's doctorate degree.", "Reasonable. Here's some items.", "Pull out a stick.", "Ah yes, you pull out her number and she answers incorrectly. Items for you!")
+choose("Hide yo wife. Hide yo kids.", "Effective. Yes. Items for you.\n", "Use your dad's doctorate degree.", "Reasonable. Here's some items.\n", "Pull out a stick.", "Ah yes, you pull out her number and she answers incorrectly. Items for you!\n")
 show_inventory()
 
 
 ###################THIS IS LEVEL 4##########################
-input("\nLet's continue on with our journey.\nWell, would you look who it is! It's {T_04.teacher} in the {T_04.subject} class!\nShe has a question for you to pass Level 4! Press enter. ")
+input(f"\nLet's continue on with our journey.\nWell, would you look who it is! It's {T_04.teacher} in the {T_04.subject} class!\nShe has a question for you to pass Level 4! Press enter. ")
 
 ask(q_04)
 
-print("WOWOWOW! You did it!\n\nBut uh oh! She tries using {T_04.special} to stop you! What shall you do?")
+print(f"WOWOWOW! You did it!\n\nBut uh oh! She tries using {T_04.special} to stop you! What shall you do?")
 
-choose("""git commit -am "Save changes" """, "Excellent Python skills. Have some items!", "Use the 3-D printer to generate a gift for her.", "She loves it! Have some items!", "Just whip it.", "Effective. Carry on with more items.")
+choose("""git commit -am "Save changes" """, "Excellent Python skills. Have some items!\n", "Use the 3-D printer to generate a gift for her.", "She loves it! Have some items!\n", "Just whip it.", "Effective. Carry on with more items.\n")
 show_inventory()
 
 
 ###################THIS IS LEVEL 5##########################
 input("\nI CAN ALMOST SEE THE LIGHT. LET'S GO! PRESS ENTER!!! ")
 
-print("NO!!! {T_05.teacher} IS TRYING TO STOP US IN HIS {T_05.subject} CLASS! HE'S GIVING US A POP QUIZ FOR LEVEL 5! Press enter. ")
+print(f"NO!!! {T_05.teacher} IS TRYING TO STOP US IN HIS {T_05.subject} CLASS! HE'S GIVING US A POP QUIZ FOR LEVEL 5! Press enter. ")
 
 ask(q_05)
 
-print("AH YES! You did it!\n\nBut uh oh! He tries using {T_05.special} to stop you! What shall you do?")
+print(f"AH YES! You did it!\n\nBut uh oh! He tries using {T_05.special} to stop you! What shall you do?")
 
-choose("Play Despacito.", "He loves that song! Get some items!", "Challenge him to a 1v1 in basketball and juke him out.", "Ah, yes, you broke his ankles! Get some items!", "Buy him Chick-fil-A.", "He is satisfied and gives you items.")
+choose("Play Despacito.", "He loves that song! Get some items!\n", "Challenge him to a 1v1 in basketball and juke him out.", "Ah, yes, you broke his ankles! Get some items!\n", "Buy him Chick-fil-A.", "He is satisfied and gives you items.\n")
 show_inventory()
 
 ###############THIS IS LEVEL 6/BOSS LEVEL####################
-input("WE MADE IT DUDES!!!!!!!!!!!! PRESS ENTER! ")
+input("\nWE MADE IT DUDES!!!!!!!!!!!! PRESS ENTER! ")
 
-input("{T_06.teacher}?!?!?!? WHAT ARE YOU DOING HERE? I'M TRYING TO GRADUATE!\nIt looks like this is THE FINAL LEVEL!!! Press enter. ")
+input(f"{T_06.teacher}?!?!?!? WHAT ARE YOU DOING HERE? I'M TRYING TO GRADUATE!\nIt looks like this is THE FINAL LEVEL!!! Press enter. ")
 
 ask(q_06)
 
-print("You make your final escape!\n\nOh no! He tries using {T_06.special} to stop you! What shall you do?")
+print(f"You make your final escape!\n\nOh no! He tries using {T_06.special} to stop you! What shall you do?")
 
-choose("Ace the PARCC test.", "Efficient. Have a pizza party and more items!", "Show him your ID.", "He allows you to pass because you won't get a LOP. Gather items.", "Take a selfie with him.", "Ah, yes. Excellent. Get some items!")
+choose("Ace the PARCC test.", "Efficient. Have a pizza party and more items!\n", "Show him your ID.", "He allows you to pass because you won't get a LOP. Gather items.\n", "Take a selfie with him.", "Ah, yes. Excellent. Get some items!\n")
 show_inventory()
 
 
 #End of the game narrative/Conclusion
-input("""Congratulation! "Looks like we madeee ittttt!"
+input("""\n\nCongratulation! "Looks like we madeee ittttt!"
 Let's see what your extra points says about your future!!\nPress enter!\n\n""")
 future()
 quit()
